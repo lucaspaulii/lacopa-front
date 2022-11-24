@@ -8,7 +8,7 @@ export default function HighlightProducts() {
     const [products, setProducts] = useState([])
 
     useEffect (() => {
-        const highlightProducts = axios.get(`http://localhost:5000/main`);
+        const highlightProducts = axios.get(`https://lacopa-api.onrender.com/main`);
 
         highlightProducts.then(res => {
             console.log(res);
@@ -25,7 +25,7 @@ export default function HighlightProducts() {
             {products.map((product) =>
             (
                 <ProductBox 
-                id={product.id}
+                id={product._id}
                 amount={product.amount}
                 category={product.category}
                 description={product.description}
