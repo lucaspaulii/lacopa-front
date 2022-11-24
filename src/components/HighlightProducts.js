@@ -11,7 +11,6 @@ export default function HighlightProducts() {
         const highlightProducts = axios.get(`https://lacopa-api.onrender.com/main`);
 
         highlightProducts.then(res => {
-            console.log(res);
             setProducts(res.data);
         });
 
@@ -25,6 +24,7 @@ export default function HighlightProducts() {
             {products.map((product) =>
             (
                 <ProductBox 
+                key={product._id}
                 id={product._id}
                 amount={product.amount}
                 category={product.category}
