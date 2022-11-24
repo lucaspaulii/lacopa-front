@@ -109,4 +109,5 @@ export const Menu = styled.div`
   font-family: "Roboto", sans-serif;
   font-size: 10px;
   padding-left: 10px;
+  position: relative;
 `;
