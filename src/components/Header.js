@@ -18,7 +18,7 @@ export default function Header() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const URL = "//localhost:5000/categories";
+    const URL = "https://lacopa-api.onrender.com/categories";
     const promise = axios.get(URL);
     promise.then((res) => {
       setCategories(res.data);
