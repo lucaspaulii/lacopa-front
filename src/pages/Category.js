@@ -10,7 +10,7 @@ export default function Category() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const URL = `http://localhost:5000/category/${category}`;
+    const URL = `https://lacopa-api.onrender.com/category/${category}`;
     const promise = axios.get(URL);
     promise.then((res) => {
       setProducts(res.data);
