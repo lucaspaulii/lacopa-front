@@ -22,8 +22,8 @@ export const Logo = styled.div`
 `;
 
 export const Destaques = styled.div`
-  width: 100vw;
-  height: 48px;
+  width: 100%;
+  padding: 15px 0;
   background-color: #ffffff;
   font-family: "Londrina Solid", cursive;
   font-size: 20px;
@@ -31,13 +31,16 @@ export const Destaques = styled.div`
   align-items: center;
   padding-left: 13px;
   margin-bottom: 15px;
+  filter: drop-shadow(0px 0.3px 2.5px #000);
 `;
 
 //Styling do component <Header>
 export const Container = styled.div`
   position: fixed;
+  z-index: 200;
   left: 0;
   top: 0;
+  filter: drop-shadow(0px 0.3px 2.5px #000);
 `;
 
 export const HeaderStyle = styled.div`
@@ -110,3 +113,13 @@ export const Menu = styled.div`
   padding-left: 10px;
   position: relative;
 `;
+
+export const ProductsDisplay = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  * {
+    margin: 5px 5px;
+  }
+`
