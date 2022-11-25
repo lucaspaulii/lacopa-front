@@ -11,7 +11,6 @@ export default function HighlightProducts(props) {
                 <p>{name}</p>
                 <p>R${value},00</p>
             </ProductContainer>
-
         </Link>
     )
 }
