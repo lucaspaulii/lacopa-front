@@ -5,7 +5,6 @@ import banner from "../assets/image/banner.png";
 export const ContainerMain = styled.div`
   background-color: #e1e1e1;
   width: 100%;
-  height: 100vh;
   overflow-x: hidden;
   margin: 0 auto;
   display: flex;
