@@ -12,10 +12,12 @@ import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import CategoriesDropDown from "./CategoriesDropDown";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isDropDown, setIsDropDown] = useState(false);
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const URL = "https://lacopa-api.onrender.com/categories";
@@ -39,7 +41,7 @@ export default function Header() {
     <Container>
       <HeaderStyle>
         <ContainerHeader>
-          <ContainerLogo>
+          <ContainerLogo onClick={() => navigate("/main")}>
             <p>LaCopa</p>
             <p>store</p>
           </ContainerLogo>

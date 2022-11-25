@@ -7,7 +7,7 @@ export default function CategoriesDropDown({ setIsDropDown, categories }) {
   return (
     <CategoriesDropDownContainer onMouseLeave={() => setIsDropDown(false)}>
       {categories.map((category) => {
-        return <Link to={`/categories/${category.toLowerCase()}`} key={category}>{category}</Link>;
+        return <Link to={`/categories/${category.toLowerCase()}`} key={category} onClick={() => setIsDropDown(false)}>{category}</Link>;
       })}
     </CategoriesDropDownContainer>
   );
@@ -21,10 +21,9 @@ const CategoriesDropDownContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F6D14B99;
+  background-color: #F6D14BCC;
   padding: 15px 0;
   border-radius: 5px;
-  border: 1px solid green;
   * {
     width: 100%;
     text-align: center;
@@ -33,8 +32,7 @@ const CategoriesDropDownContainer = styled.div`
     color: #000;
     padding: 5px 0;
     text-decoration: none;
-    border-bottom: 1px solid green;
-    background-color: #F6D14B;
+    border-bottom: 2px solid #F6D14B99;
   }
   *:hover {
     color: red;

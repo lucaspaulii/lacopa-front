@@ -29,6 +29,8 @@ font-size: 12px;
 font-weight: 100;
 text-align: center;
 color: black;
+border-radius: 5px;
+filter: drop-shadow(0px 1px 2px #000);
 p:nth-child(3) {
     font-size: 8px;
 }
