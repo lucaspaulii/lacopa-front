@@ -16,7 +16,7 @@ export default function Category() {
     let product
 
     useEffect(() => {
-        const URL = `https://lacopa-back.onrender.com/products/${id}`;
+        const URL = `https://lacopa-api.onrender.com/products/${id}`;
         const promise = axios.get(URL);
         promise.then((res) => {
             product = res.data[0];
