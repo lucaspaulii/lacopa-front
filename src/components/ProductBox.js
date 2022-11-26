@@ -11,7 +11,6 @@ export default function HighlightProducts(props) {
                 <p>{name}</p>
                 <p>R${value},00</p>
             </ProductContainer>
-
         </Link>
     )
 }
@@ -31,6 +30,9 @@ text-align: center;
 color: black;
 border-radius: 5px;
 filter: drop-shadow(0px 1px 2px #000);
+p:nth-child(2) {
+    width: 80%;
+}
 p:nth-child(3) {
     font-size: 8px;
 }
