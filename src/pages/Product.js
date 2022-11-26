@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Destaques } from "../style/styled.js";
 import { Icon } from '@iconify/react';
 import { RotatingLines } from  'react-loader-spinner';
+import RelatedProducts from "../components/RelatedProducts.js";
 
 export default function Category() {
     const { id } = useParams();
@@ -44,7 +45,6 @@ export default function Category() {
         <CategoryContainer>
             <Destaques>{category} // {name}</Destaques>
             <ProductContainer>
-                
             {loading ? <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true}/>
             : <ProductDisplay>
                     <Top>
@@ -67,6 +67,8 @@ export default function Category() {
                     <Description><p>Descrição:</p>{description}</Description>
                 </ProductDisplay>}
             </ProductContainer>
+            <Related>Produtos Relacionados</Related>
+            <RelatedProducts/>
         </CategoryContainer>
     );
 }
@@ -84,6 +86,7 @@ const ProductContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 `
 
 const ProductDisplay = styled.div`
@@ -176,4 +179,9 @@ const Cart = styled.div`
     background: #FDFDFD;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+`
+
+const Related = styled.span`
+font-family: "Londrina Solid", cursive;
+
 `
