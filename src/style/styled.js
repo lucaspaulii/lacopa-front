@@ -79,6 +79,7 @@ export const ContainerIcons = styled.div`
   display: flex;
   margin-right: 5px;
   * {
+    color: #ffffff;
     margin-right: 5px;
   }
 `;
@@ -122,4 +123,122 @@ export const ProductsDisplay = styled.div`
   * {
     margin: 5px 5px;
   }
-`
+`;
+// styling do signin e signup
+
+export const UserContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #85ba4f;
+  font-family: "Open Sans", sans-serif;
+  img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  h1:nth-child(1) {
+    color: #fff;
+    font-size: 50px;
+    text-shadow: -2.5px -2.5px 0 #000, 0 -2.5px 0 #000, 2.5px -2.5px 0 #000,
+      2.5px 0 0 #000, 2.5px 2.5px 0 #000, 0 2.5px 0 #000, -2.5px 2.5px 0 #000,
+      -2.5px 0 0 #000;
+    font-family: "Londrina Solid", cursive;
+  }
+  h1:nth-child(2) {
+    color: #000;
+    font-size: 50px;
+    text-shadow: -1.5px -1.5px 0 #ffffff, 0 -1.5px 0 #ffffff,
+      1.5px -0.5px 0 #ffffff, 1.5px 0 0 #ffffff, 1.5px 1.5px 0 #ffffff,
+      0 1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, -1.5px 0 0 #ffffff;
+    margin-bottom: 25px;
+    font-family: "Londrina Solid", cursive;
+  }
+  p {
+    text-align: center;
+    margin-top: 30px;
+    color: #ffffff;
+  }
+  span {
+    font-weight: 600;
+  }
+`;
+export const InputButton = styled.button`
+  background-color: #548e19;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  height: 50px;
+  margin-top: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  img {
+    height: 80%;
+    width: auto;
+  }
+`;
+export const InputsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 7px;
+    font-size: 16px;
+  }
+  input:focus {
+    outline: 3px solid green;
+    outline-offset: -4px;
+    color: #000;
+  }
+  input[type="radio"] {
+    border: 0px;
+    height: 24px;
+    width: auto;
+  }
+  input[type="radio"]:checked {
+    appearance: none;
+    background-color: red;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #ffffff;
+  }
+  td {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  label {
+    color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  p {
+    position: absolute;
+    bottom: -200px;
+    margin: 0 auto;
+    color: ${(props) => props.color};
+  }
+`;
