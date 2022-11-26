@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Destaques } from "../style/styled.js";
 import { Icon } from '@iconify/react';
+import { RotatingLines } from  'react-loader-spinner';
 
 export default function Category() {
     const { id } = useParams();
+    const [loading, setLoading] = useState(true)
     const [category, setCategory] = useState();
     const [name, setName] = useState();
     const [reduName, setReduName] = useState();
@@ -31,7 +33,7 @@ export default function Category() {
             } else {
                 setReduName(product.name);
             }
-            console.log(product);
+            setLoading(false);
         });
         promise.catch((err) => {
             console.log(err);
@@ -42,7 +44,9 @@ export default function Category() {
         <CategoryContainer>
             <Destaques>{category} // {name}</Destaques>
             <ProductContainer>
-                <ProductDisplay>
+                
+            {loading ? <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true}/>
+            : <ProductDisplay>
                     <Top>
                         <Icon icon="mdi:cards-heart-outline" color="red" width="36" height="36" />
                         <Name><p>{reduName}</p></Name>
@@ -61,7 +65,7 @@ export default function Category() {
                         </ShopBox>
                     </ImageBox>
                     <Description><p>Descrição:</p>{description}</Description>
-                </ProductDisplay>
+                </ProductDisplay>}
             </ProductContainer>
         </CategoryContainer>
     );
