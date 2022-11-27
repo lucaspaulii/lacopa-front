@@ -10,7 +10,7 @@ export default function RelatedProducts() {
     const [products, setProducts] = useState([])
 
     useEffect (() => {
-        const URL = `https://lacopa-back.onrender.com/products/${id}/related`;
+        const URL = `https://lacopa-api.onrender.com/products/${id}/related`;
         const promise = axios.get(URL);
 
         promise.then(res => {
