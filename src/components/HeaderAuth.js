@@ -14,12 +14,12 @@ export default function HeaderAuth() {
 )}
 
 const HeaderContainer = styled.div`
-height: 112px;
+height: 150px;
 display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 align-items: center;
-margin-bottom: 60px;
+margin-bottom: 20px;
 `
 
 const ContainerLogoAuth = styled.div`

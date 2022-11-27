@@ -10,7 +10,7 @@ export default function Login() {
         <ContainerAuth>
             <HeaderAuth />
             <FormLogin />
-            <StyledLink to={`/signup`}>
+            <StyledLink to={`/sign-up`}>
                 Primeira vez? Cadastre-se!
             </StyledLink>
         </ContainerAuth>

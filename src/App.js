@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import Category from "./pages/Category";
 import Header from "./components/Header";
 import Login from "./pages/Login"
+import Signup from "./pages/Signup";
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/products/:id" element={<Product />} />
           <Route path="/categories/:category" element={<Category />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/sign-in" element={<Login />} />
+          <Route path="/sign-up" element={<Signup />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>
