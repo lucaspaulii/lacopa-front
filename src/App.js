@@ -11,7 +11,7 @@ import Signup from "./pages/Signup";
 
 function App() {
   return (
-    <AuthContext.Provider value="">
+    <AuthContext.Provider value={{auth, setAuth, token, setToken}}>
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
