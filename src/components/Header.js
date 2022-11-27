@@ -14,11 +14,13 @@ import CategoriesDropDown from "./CategoriesDropDown";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
+import { UserInfoContext } from "../contexts/UserContext";
 
 export default function Header() {
   const [isDropDown, setIsDropDown] = useState(false);
   const [categories, setCategories] = useState([]);
   const { userToken } = useContext(AuthContext);
+  const { setUserInfo } = useContext(UserInfoContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,6 +40,22 @@ export default function Header() {
   function toggleDropDown() {
     setIsDropDown(!isDropDown);
   }
+
+  useEffect(() => {
+    if (userToken) {
+      const URL = "https://lacopa-api.onrender.com/user";
+      const config = {
+        headers: { Authorization: `Bearer ${userToken}` },
+      };
+      const promise = axios.get(URL, config);
+      promise.then((res) => {
+        setUserInfo(res.data);
+      });
+      promise.catch((err) => {
+        console.log(err)
+      });
+    }
+  }, []);
 
   return (
     <Container>
