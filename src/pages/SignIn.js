@@ -3,7 +3,7 @@ import { RotatingLines } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
-//import { UserInfoContext } from "../contexts/UserContext";
+import { UserInfoContext } from "../contexts/UserContext";
 import { InputButton, InputsContainer, UserContainer } from "../style/styled";
 
 export default function SignIn(params) {
@@ -13,8 +13,7 @@ export default function SignIn(params) {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
   const { setUserToken } = useContext(AuthContext);
-  //const { setUserInfo } = useContext(UserInfoContext);
-  // const locationTo = "./main"; //this.props.location.state;
+  const { setUserInfo } = useContext(UserInfoContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,19 +32,32 @@ export default function SignIn(params) {
     const URL = "https://lacopa-api.onrender.com/sign-in";
     const promise = axios.post(URL, obj);
     promise.then((res) => {
-      setUserToken(res.data);
-      console.log(res.data)
+      if (!localStorage.getItem("userToken")) {
+        setUserToken(res.data);
+        localStorage.setItem("userToken", res.data);
+      }
       userInfo(res.data);
-      setIsLoading(false);
       navigate("/main");
+    });
+    promise.catch((err) => {
+      setErrorMessage(err.response.data);
+    });
+  }
+
+  function userInfo(token) {
+    const URL = "https://lacopa-api.onrender.com/user";
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const promise = axios.get(URL, config);
+    promise.then((res) => {
+      setUserInfo(res.data);
     });
     promise.catch((err) => {
       setErrorMessage(err.response.data);
       setIsLoading(false);
     });
   }
-
-  function userInfo(token) {}
 
   return (
     <UserContainer>

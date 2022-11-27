@@ -31,7 +31,6 @@ export default function SignUp(params) {
       };
       setIsLoading(true);
       setErrorMessage(undefined);
-      console.log(submitObject);
       signUp(submitObject);
     }
   }

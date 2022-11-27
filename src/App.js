@@ -7,6 +7,7 @@ import Category from "./pages/Category";
 import Header from "./components/Header";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import UserInfoPage from "./pages/UserInfoPage.js";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/categories/:category" element={<Category />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/userinfo" element={<UserInfoPage />} />
       </Routes>
     </BrowserRouter>
   );
