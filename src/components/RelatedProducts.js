@@ -6,11 +6,6 @@ import ProductBox from "./ProductBox.js"
 
 
 export default function RelatedProducts() {
-    function refreshPage() {
-        window.reload();
-      }
-
-
     const { id } = useParams();
     const [products, setProducts] = useState([])
 
@@ -30,8 +25,7 @@ export default function RelatedProducts() {
     return (
         <ContainerProducts>
             {products.map((product) =>
-            (
-                <ProductBox 
+            (<ProductBox 
                 key={product._id}
                 id={product._id}
                 amount={product.amount}
@@ -40,7 +34,6 @@ export default function RelatedProducts() {
                 image={product.image}
                 name={product.name}
                 value={product.value}
-                onClick = {() => refreshPage}
                 />
             ))}
         </ContainerProducts>

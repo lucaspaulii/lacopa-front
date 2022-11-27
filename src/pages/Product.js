@@ -6,6 +6,7 @@ import { Destaques } from "../style/styled.js";
 import { Icon } from '@iconify/react';
 import { RotatingLines } from  'react-loader-spinner';
 import RelatedProducts from "../components/RelatedProducts.js";
+import Header from "../components/Header.js";
 
 export default function Category() {
     const { id } = useParams();
@@ -43,7 +44,7 @@ export default function Category() {
 
     return (
         <CategoryContainer>
-            <Destaques>{category} // {name}</Destaques>
+            <Destaques>{category} <p>//</p> {name}</Destaques>
             <ProductContainer>
             {loading ? <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true}/>
             : <ProductDisplay>
@@ -67,8 +68,10 @@ export default function Category() {
                     <Description><p>Descrição:</p>{description}</Description>
                 </ProductDisplay>}
             </ProductContainer>
-            <Related>Produtos Relacionados</Related>
-            <RelatedProducts/>
+            <RelatedContainer>
+                <Related>Produtos Relacionados</Related>
+                <RelatedProducts/>
+            </RelatedContainer>
         </CategoryContainer>
     );
 }
@@ -80,6 +83,7 @@ const CategoryContainer = styled.div`
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    align-items: center;
 `
 
 const ProductContainer = styled.div`
@@ -181,7 +185,15 @@ const Cart = styled.div`
     border-radius: 5px;
 `
 
+const RelatedContainer = styled.div`
+width: 90%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+`
+
 const Related = styled.span`
 font-family: "Londrina Solid", cursive;
+margin-bottom: 15px;
 
 `

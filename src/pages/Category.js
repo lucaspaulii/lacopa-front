@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ProductBox from "../components/ProductBox.js";
+import Header from "../components/Header.js";
 import { Destaques, ProductsDisplay } from "../style/styled.js";
 
 export default function Category() {
@@ -22,6 +23,7 @@ export default function Category() {
 
   return (
     <CategoryContainer>
+      <Header />
       <Destaques>{category}</Destaques>
       <ProductsDisplay>
         {products.map((product) => {
