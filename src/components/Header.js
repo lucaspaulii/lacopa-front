@@ -9,14 +9,16 @@ import {
   Menu,
 } from "../style/styled";
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategoriesDropDown from "./CategoriesDropDown";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Header() {
   const [isDropDown, setIsDropDown] = useState(false);
   const [categories, setCategories] = useState([]);
+  const { userToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,7 +50,9 @@ export default function Header() {
           <ContainerIcons>
             <Icon icon="mdi:heart" width="20" />
             <Icon icon="mdi:cart" width="20" />
-            <Icon icon="gg:profile" width="20" />
+            <Link to={userToken ? "/userinfo" : "/signin"}>
+              <Icon icon="gg:profile" width="20" />
+            </Link>
           </ContainerIcons>
         </ContainerHeader>
         <ContainerSearch>
@@ -61,7 +65,12 @@ export default function Header() {
       </HeaderStyle>
       <Menu>
         {isDropDown ? (
-          <Icon icon="mdi:menu-open" width="20" onClick={toggleDropDown} style={{color: 'green'}} />
+          <Icon
+            icon="mdi:menu-open"
+            width="20"
+            onClick={toggleDropDown}
+            style={{ color: "green" }}
+          />
         ) : (
           <Icon
             icon="mdi:menu"
