@@ -6,7 +6,7 @@ import { Destaques } from "../style/styled.js";
 import { Icon } from '@iconify/react';
 import { RotatingLines } from  'react-loader-spinner';
 import RelatedProducts from "../components/RelatedProducts.js";
-import Header from "../components/Header.js";
+import ShopBox from "../components/ShopBox.js"
 
 export default function Category() {
     const { id } = useParams();
@@ -55,15 +55,7 @@ export default function Category() {
                     <Price>R${price},00</Price>
                     <ImageBox>
                         <Image src={image} />
-                        <ShopBox>
-                            <Quantity>
-                                <p>Quantidade:</p>
-                            </Quantity>
-                            <Cart>
-                                <Icon icon="mdi:cart-plus" width="36" height="36" />
-                                <p>Adicionar ao carrinho</p>
-                            </Cart>
-                        </ShopBox>
+                        <ShopBox id={id} image={image} name={name} price={price}/>
                     </ImageBox>
                     <Description><p>Descrição:</p>{description}</Description>
                 </ProductDisplay>}
@@ -147,13 +139,6 @@ const ImageBox = styled.div`
     display: flex;
     width: 90%;
     justify-content: space-between;
-`
-
-const ShopBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #8B8B8B
 `
 
 const Quantity = styled.div`

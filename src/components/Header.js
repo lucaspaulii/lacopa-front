@@ -67,7 +67,9 @@ export default function Header() {
           </ContainerLogo>
           <ContainerIcons>
             <Icon icon="mdi:heart" width="20" />
-            <Icon icon="mdi:cart" width="20" />
+            <Link to={userToken ? "/cart" : "/signin"}>
+              <Icon icon="mdi:cart" width="20" />
+            </Link>
             <Link to={userToken ? "/userinfo" : "/signin"}>
               <Icon icon="gg:profile" width="20" />
             </Link>

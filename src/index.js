@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
     <UserInfoProvider>
-      <App />
+        <App />
     </UserInfoProvider>
   </AuthProvider>
 );

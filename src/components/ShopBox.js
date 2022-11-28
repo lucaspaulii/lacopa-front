@@ -1,16 +1,45 @@
+import { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
 import { Icon } from '@iconify/react';
 import styled from 'styled-components';
 import Quantity from './Quantity';
-
-export default function ShopBox() {
-
+import { AuthContext } from "../contexts/AuthContext";
 
 
+
+export default function ShopBox(props) {
+const [successMessage, setSuccessMessage] = useState(undefined);
+const { userToken } = useContext(AuthContext);
+const [quantity, setQuantity] = useState(1)
+const {id, name, price, image} = props
+const URL = `https://lacopa-api.onrender.com/cart`;
+const products = {
+    id,
+    price,
+    name,
+    image,
+    quantity,
+}
+
+function updateCart() {
+    if (userToken) {
+        const config = {
+            headers: { Authorization: `Bearer ${userToken}`}
+        };
+        const promise = axios.post(URL, products, config);
+        promise.then((res) => {
+            console.log("Produto adicionado ao carrinho!");
+        });
+        promise.catch((err) => {
+            console.log(err.response)
+        })
+    }
+}
 
     return (
         <ShopBoxContainer>
-            <Quantity />
-            <Cart>
+            <Quantity quantity={quantity} setQuantity={setQuantity}/>
+            <Cart onClick={() => updateCart()}>
                 <Icon icon="mdi:cart-plus" width="36" height="36" />
                 <p>Adicionar ao carrinho</p>
             </Cart>
@@ -25,7 +54,7 @@ const ShopBoxContainer = styled.div`
     color: #8B8B8B
 `
 
-const Cart = styled.div`
+const Cart = styled.button`
     font-family: "Roboto", sans-sarif;
     font-size: 12px;
     display: flex;
