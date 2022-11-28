@@ -96,6 +96,7 @@ export const ContainerLogo = styled.div`
 export const ContainerSearch = styled.div`
   width: 220px;
   height: 20px;
+  display: flex;
 `;
 
 export const Search = styled.input`
@@ -105,6 +106,7 @@ export const Search = styled.input`
   text-align: center;
   border: 0.5px;
   border-radius: 5px;
+  margin-right: 5px;
 `;
 
 export const Menu = styled.div`
@@ -272,7 +274,7 @@ export const QtyContainer = styled.div`
 `
 
 export const Qty = styled.input`
-  border-sizing: border-box;
+  box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   text-align: center;
@@ -285,3 +287,11 @@ export const QtyButton = styled.button`
   font-size: 20px;
   border: none;
 `
+
+export const CategoryContainer = styled.div`
+  width: 100%;
+  height: calc(100vh - 110px);
+  margin-top: 110px;
+  display: flex;
+  flex-direction: column;
+`;

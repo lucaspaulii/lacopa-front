@@ -9,6 +9,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import UserInfoPage from "./pages/UserInfoPage.js";
 import Cart from "./pages/Cart";
+import SearchBar from "./pages/SearchBar";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/userinfo" element={<UserInfoPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/search/:searchInput" element={<SearchBar />} />
       </Routes>
     </BrowserRouter>
   );

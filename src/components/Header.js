@@ -21,6 +21,7 @@ export default function Header() {
   const [categories, setCategories] = useState([]);
   const { userToken } = useContext(AuthContext);
   const { setUserInfo } = useContext(UserInfoContext);
+  const [inputValue, setInputValue] = useState(undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,7 +81,16 @@ export default function Header() {
             type="text"
             name="email"
             placeholder="O que você está procurando?"
+            onChange={e => setInputValue(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                navigate(`/search/${inputValue}`)
+              }
+            }}
           />
+          <Link to={inputValue ? `/search/${inputValue}` : "#"} style={{color: "#ffffff"}}>
+          <Icon icon="ic:baseline-search" width="25" />
+          </Link>
         </ContainerSearch>
       </HeaderStyle>
       <Menu>
