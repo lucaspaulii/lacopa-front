@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function HighlightProducts(props) {
     const {id, amount, category, description, image, name, value} = props
+    const navigate = useNavigate();
 
     return (
-        <Link to={`/products/${id}`} style={{ textDecoration: 'none' }} >
-            <ProductContainer>
+            <ProductContainer onClick={() => navigate(`/products/${id}`)}>
                 <ProductImage src={image} />
                 <p>{name}</p>
                 <p>R${value},00</p>
             </ProductContainer>
-        </Link>
     )
 }
 
