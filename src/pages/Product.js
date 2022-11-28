@@ -40,7 +40,7 @@ export default function Category() {
         promise.catch((err) => {
             console.log(err);
         });
-    }, []);
+    }, [id]);
 
     return (
         <CategoryContainer>
