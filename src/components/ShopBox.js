@@ -31,7 +31,7 @@ export default function ShopBox(props) {
         };
         const promise = axios.post(URL, products, config);
         promise.then((res) => {
-            alarm("Produto adicionado ao carrinho!");
+            alert("Produto adicionado ao carrinho!");
         });
         promise.catch((err) => {
             console.log(err.response)
