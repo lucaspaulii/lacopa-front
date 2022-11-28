@@ -1,14 +1,16 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import InfoProd from "./InfoProd";
+import axios from "axios";
+import { AuthContext } from "../contexts/AuthContext";
+
 
 export default function Modal(props) {
     const {products, setModal} = props
     const [total, setTotal] = useState(0);
+    const { userToken } = useContext(AuthContext);
 
-    setTimeout(() => {
-        setModal(false);
-      }, 8000);
+setTimeout(resetCart, 8000)
 
     useEffect (() => {
         let valorTotal = 0;
@@ -17,6 +19,20 @@ export default function Modal(props) {
         )
         setTotal(valorTotal);
     })
+
+    function resetCart() {
+        if (userToken) {
+            const config = {
+                headers: { Authorization: `Bearer ${userToken}`}
+            };
+            const promise = axios.put(`https://lacopa-back.onrender.com/cart`, "", config)
+            promise.then(res => {
+            setTimeout(setModal(false), 5000);
+            });
+            promise.catch(err => {
+                console.log(err.response.data)
+            })
+    }}
 
     return (
         <Container>
@@ -34,6 +50,9 @@ export default function Modal(props) {
             </ModalCont>
         </Container>
     )
+
+    
+
 }
 
 const Container = styled.div`
