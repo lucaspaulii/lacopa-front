@@ -124,7 +124,8 @@ export const ProductsDisplay = styled.div`
     margin: 5px 5px;
   }
 `;
-// styling do signin e signup
+
+//Styling do signin e signup
 
 export const UserContainer = styled.div`
   height: 100vh;
@@ -242,3 +243,41 @@ export const InputsContainer = styled.div`
     color: ${(props) => props.color};
   }
 `;
+
+//Styling do Component <Quantity>
+export const QuantityContainer = styled.div`
+  font-family: "Roboto", sans-sarif;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 81px;
+  height: 52px;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+`
+
+export const QtyContainer = styled.div`
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
+
+export const Qty = styled.input`
+  border-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  border: none;
+`
+
+export const QtyButton = styled.button`
+  background: none;
+  font-size: 20px;
+  border: none;
+`

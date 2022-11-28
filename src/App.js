@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import UserInfoPage from "./pages/UserInfoPage.js";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/userinfo" element={<UserInfoPage />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );

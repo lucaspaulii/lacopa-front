@@ -6,6 +6,7 @@ import { Destaques } from "../style/styled.js";
 import { Icon } from '@iconify/react';
 import { RotatingLines } from  'react-loader-spinner';
 import RelatedProducts from "../components/RelatedProducts.js";
+import ShopBox from "../components/ShopBox.js"
 
 export default function Category() {
     const { id } = useParams();
@@ -43,7 +44,7 @@ export default function Category() {
 
     return (
         <CategoryContainer>
-            <Destaques>{category} // {name}</Destaques>
+            <Destaques>{category} <p>//</p> {name}</Destaques>
             <ProductContainer>
             {loading ? <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true}/>
             : <ProductDisplay>
@@ -54,21 +55,15 @@ export default function Category() {
                     <Price>R${price},00</Price>
                     <ImageBox>
                         <Image src={image} />
-                        <ShopBox>
-                            <Quantity>
-                                <p>Quantidade:</p>
-                            </Quantity>
-                            <Cart>
-                                <Icon icon="mdi:cart-plus" width="36" height="36" />
-                                <p>Adicionar ao carrinho</p>
-                            </Cart>
-                        </ShopBox>
+                        <ShopBox id={id} image={image} name={name} price={price}/>
                     </ImageBox>
                     <Description><p>Descrição:</p>{description}</Description>
                 </ProductDisplay>}
             </ProductContainer>
-            <Related>Produtos Relacionados</Related>
-            <RelatedProducts/>
+            <RelatedContainer>
+                <Related>Produtos Relacionados</Related>
+                <RelatedProducts/>
+            </RelatedContainer>
         </CategoryContainer>
     );
 }
@@ -80,6 +75,7 @@ const CategoryContainer = styled.div`
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    align-items: center;
 `
 
 const ProductContainer = styled.div`
@@ -145,13 +141,6 @@ const ImageBox = styled.div`
     justify-content: space-between;
 `
 
-const ShopBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    color: #8B8B8B
-`
-
 const Quantity = styled.div`
     font-family: "Roboto", sans-sarif;
     font-size: 12px;
@@ -181,7 +170,15 @@ const Cart = styled.div`
     border-radius: 5px;
 `
 
+const RelatedContainer = styled.div`
+width: 90%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+`
+
 const Related = styled.span`
 font-family: "Londrina Solid", cursive;
+margin-bottom: 15px;
 
 `
