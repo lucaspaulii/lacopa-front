@@ -16,7 +16,7 @@ export default function HighlightProducts(props) {
 }
 
 const ProductContainer = styled.div`
-font-family: 'Londrina Solid', cursive;
+font-family: "Open Sans", sans-serif;
 height: 130px;
 width: 100px;
 background-color: white;
@@ -29,16 +29,23 @@ font-weight: 100;
 text-align: center;
 color: black;
 border-radius: 5px;
+font-weight: 600;
+padding: 5px 0;
+overflow-y: hidden;
 filter: drop-shadow(0px 1px 2px #000);
 p:nth-child(2) {
     width: 80%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 p:nth-child(3) {
-    font-size: 8px;
+    font-size: 10px;
+    font-weight: 400;
+    padding-top: 5px;
 }
 `
 
 const ProductImage = styled.img`
-max-height: 70px;
-
+max-height: 60px;
+max-width: 90%;
 `

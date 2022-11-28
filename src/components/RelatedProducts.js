@@ -20,7 +20,7 @@ export default function RelatedProducts() {
         promise.catch(err => {
             console.log(err.response.data);
         })
-    }, [])
+    }, [id])
 
     return (
         <ContainerProducts>

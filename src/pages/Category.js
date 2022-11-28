@@ -25,10 +25,14 @@ export default function Category() {
     });
   }, [category]);
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <CategoryContainer>
       <Header />
-      <Destaques>{category}</Destaques>
+      <Destaques>{capitalizeFirstLetter(category)}</Destaques>
       <ProductsDisplay>
         {isLoading && (
           <RotatingLines

@@ -32,6 +32,10 @@ export const Destaques = styled.div`
   padding-left: 13px;
   margin-bottom: 15px;
   filter: drop-shadow(0px 0.3px 2.5px #000);
+  span {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+  }
 `;
 
 //Styling do component <Header>
