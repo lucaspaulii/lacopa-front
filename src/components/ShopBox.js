@@ -11,7 +11,7 @@ export default function ShopBox(props) {
   const { userToken } = useContext(AuthContext);
   const [quantity, setQuantity] = useState(1);
   const { id, name, price, image } = props;
-  const URL = `//localhost:5000/cart`;
+  const URL = `https://lacopa-api.onrender.com/sign-in/cart`;
   const navigate = useNavigate();
   const products = {
     id,
