@@ -6,11 +6,13 @@ import { AuthContext } from "../contexts/AuthContext"
 import CardCart from "../components/CardCart"
 import { UserInfoContext } from "../contexts/UserContext.js";
 import { Icon } from "@iconify/react";
+import Modal from "../components/Modal"
 
 
 
 export default function Cart() {
 const [products, setProducts] = useState([]);
+const [modal, setModal] = useState(false);
 const [total, setTotal] = useState(0);
 const { userToken } = useContext(AuthContext);
 const { userInfo } = useContext(UserInfoContext);
@@ -66,9 +68,10 @@ const { userInfo } = useContext(UserInfoContext);
             <Footer>
                 <FooterStyle>
                     <h1>TOTAL: R${total},00</h1>
-                    <Icon icon="mdi:cart-check" width="80" height="80" />
+                    <Icon icon="mdi:cart-check" width="80" height="80" onClick={() => setModal(true)}/>
                 </FooterStyle>
             </Footer>
+            {modal ? <Modal products={products} setModal={setModal}/> : null}
         </CategoryContainer>
     )
 }
@@ -81,6 +84,7 @@ const CategoryContainer = styled.div`
     flex-direction: column;
     overflow-x: hidden;
     align-items: center;
+    overflow: ${props => props.modal ? 'hidden' : 'scroll'}
 `
 
 const CardsCart = styled.div`
@@ -88,9 +92,11 @@ display: flex;
 flex-direction: column;    
 gap: 15px;
 margin-bottom: 20px;
+z-index: 0;
 `
 
 const UserInfoBox = styled.div`
+z-index: 0;
 font-family: 'Roboto', sans-sarif;
 height: 130px;
 width: 314px;
@@ -114,7 +120,8 @@ h1 {
 }
 `
 const Footer = styled.div`
-  z-index: 200;
+  display: ${props => props.modal ? 'none' : ''}
+  z-index: 1;
   left: 0;
   bottom: 0;
   h1 {

@@ -32,6 +32,7 @@ text-align: center;
 color: black;
 border-radius: 5px;
 filter: drop-shadow(0px 1px 2px #000);
+z-index: 1;
 `
 
 const ImageBox = styled.img`
