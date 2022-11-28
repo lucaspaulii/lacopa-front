@@ -1,13 +1,14 @@
 import axios from "axios";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ProductBox from "./ProductBox.js"
 
 
 export default function RelatedProducts() {
     const { id } = useParams();
     const [products, setProducts] = useState([])
+    const navigate = useNavigate();
 
     useEffect (() => {
         const URL = `https://lacopa-api.onrender.com/products/${id}/related`;
