@@ -5,11 +5,13 @@ import { Destaques } from "../style/styled"
 import { AuthContext } from "../contexts/AuthContext"
 import CardCart from "../components/CardCart"
 import { UserInfoContext } from "../contexts/UserContext.js";
+import { Icon } from "@iconify/react";
 
 
 
 export default function Cart() {
-const [products, setProducts] = useState([])
+const [products, setProducts] = useState([]);
+const [total, setTotal] = useState(0);
 const { userToken } = useContext(AuthContext);
 const { userInfo } = useContext(UserInfoContext);
 
@@ -28,6 +30,13 @@ const { userInfo } = useContext(UserInfoContext);
         })
     }})
     
+    useEffect (() => {
+        let valorTotal = 0;
+        products.map((product) =>
+        valorTotal = valorTotal + (product.price*product.quantity)
+        )
+        setTotal(valorTotal);
+    })
 
     return (
         <CategoryContainer>
@@ -41,8 +50,10 @@ const { userInfo } = useContext(UserInfoContext);
                     name={product.name}
                     price={product.price}
                     quantity={product.quantity}
+                    setTotal={setTotal}
+                    total={total}
                     />
-                )
+                ),
                 )}
             </CardsCart>
             <UserInfoBox>
@@ -52,6 +63,12 @@ const { userInfo } = useContext(UserInfoContext);
                 <p>{userInfo.email}</p>
                 <p>{userInfo.cpf}</p>
             </UserInfoBox>
+            <Footer>
+                <FooterStyle>
+                    <h1>TOTAL: R${total},00</h1>
+                    <Icon icon="mdi:cart-check" width="80" height="80" />
+                </FooterStyle>
+            </Footer>
         </CategoryContainer>
     )
 }
@@ -90,8 +107,27 @@ text-align: left;
 color: black;
 border-radius: 5px;
 filter: drop-shadow(0px 1px 2px #000);
+margin-bottom: 20px;
 h1 {
     font-size: 24px;
     font-family: "Londrina Solid", cursive;
 }
 `
+const Footer = styled.div`
+  z-index: 200;
+  left: 0;
+  bottom: 0;
+  h1 {
+    font-size: 42px;
+    font-family: "Londrina Solid", cursive;
+}
+`;
+
+const FooterStyle = styled.div`
+width: 100vw;
+height: 120px;
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: space-around;
+`;

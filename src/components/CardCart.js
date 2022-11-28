@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 export default function CardCart(props) {
-    const {productId, image, name, price, quantity} = props
+    const {productId, image, name, price, quantity, total, setTotal} = props
     const newPrice = price.toString();
     return (
         <ProductContainer>
