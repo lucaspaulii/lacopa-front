@@ -28,7 +28,7 @@ function updateCart() {
         };
         const promise = axios.post(URL, products, config);
         promise.then((res) => {
-            console.log("Produto adicionado ao carrinho!");
+            alarm("Produto adicionado ao carrinho!");
         });
         promise.catch((err) => {
             console.log(err.response)
