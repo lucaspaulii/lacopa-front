@@ -30,7 +30,6 @@ export default function Category() {
 
   return (
     <CategoryContainer>
-      <Header />
       <Destaques>{capitalizeFirstLetter(category)}</Destaques>
       <ProductsDisplay>
         {isLoading && (

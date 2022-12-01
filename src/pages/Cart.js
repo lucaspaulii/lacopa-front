@@ -68,10 +68,10 @@ const { userInfo } = useContext(UserInfoContext);
             <Footer>
                 <FooterStyle>
                     <h1>TOTAL: R${total},00</h1>
-                    <Icon icon="mdi:cart-check" width="80" height="80" onClick={() => setModal(true)}/>
+                    <Icon icon="mdi:cart-check" width="40" height="40" onClick={() => setModal(true)}/>
                 </FooterStyle>
             </Footer>
-            {modal ? <Modal products={products} setModal={setModal}/> : null}
+            {modal ? <Modal products={products} setModal={setModal} /> : null}
         </CategoryContainer>
     )
 }
@@ -120,12 +120,13 @@ h1 {
 }
 `
 const Footer = styled.div`
-  display: ${props => props.modal ? 'none' : ''}
+  display: ${props => props.modal ? 'none' : ''};
+  position: absolute;
   z-index: 1;
   left: 0;
   bottom: 0;
   h1 {
-    font-size: 42px;
+    font-size: 30px;
     font-family: "Londrina Solid", cursive;
 }
 `;
