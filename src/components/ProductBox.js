@@ -12,11 +12,13 @@ export default function HighlightProducts(props) {
   }, []);
 
   return (
-    <ProductContainer onClick={() => navigate(`/products/${id}`)}>
-                <ProductImage src={image} />
-                <p>{name}</p>
-                <p>R${value},00</p>
+    <>
+    <ProductContainer onClick={() => navigate(`/products/${id}`)} showProduct={showProduct}>
+      <ProductImage src={image} />
+      <p>{name}</p>
+      <p>R${value},00</p>
     </ProductContainer>
+    </>
   );
 }
 
@@ -37,8 +39,8 @@ const ProductContainer = styled.div`
   font-weight: 600;
   padding: 5px 0;
   overflow-y: hidden;
-  transition: opacity 0.7s ease-out;
-  opacity: ${props => props.showProduct ? '1' : '0'};
+  transition: opacity 1.2s ease-out;
+  opacity: ${(props) => (props.showProduct ? "1" : "0")};
   filter: drop-shadow(0px 1px 2px #000);
   p:nth-child(2) {
     width: 80%;

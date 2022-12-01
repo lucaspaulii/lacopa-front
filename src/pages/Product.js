@@ -19,33 +19,35 @@ export default function Category() {
   const [image, setImage] = useState();
   let product;
 
-    useEffect(() => {
-        const URL = `https://lacopa-api.onrender.com/products/${id}`;
-        const promise = axios.get(URL);
-        promise.then((res) => {
-            product = res.data[0];
-            setCategory(product.category);
-            setPrice(product.value);
-            setDescription(product.description);
-            setImage(product.image);
-            setName(product.name);
-            if (product.name.length >= 20) {
-                let sliceName = product.name.slice(0, 20)
-                setReduName(sliceName + "...");
-            } else {
-                setReduName(product.name);
-            }
-            setLoading(false);
-        });
-        promise.catch((err) => {
-            console.log(err);
-        });
-    }, [id]);
+  useEffect(() => {
+    const URL = `https://lacopa-api.onrender.com/products/${id}`;
+    const promise = axios.get(URL);
+    promise.then((res) => {
+      product = res.data[0];
+      setCategory(product.category);
+      setPrice(product.value);
+      setDescription(product.description);
+      setImage(product.image);
+      setName(product.name);
+      if (product.name.length >= 20) {
+        let sliceName = product.name.slice(0, 20);
+        setReduName(sliceName + "...");
+      } else {
+        setReduName(product.name);
+      }
+      setLoading(false);
+    });
+    promise.catch((err) => {
+      console.log(err);
+    });
+  }, [id]);
 
   return (
     <CategoryContainer>
       <Destaques>
-      <p>{category} <span>/ {name}</span></p>
+        <p>
+          {category} <span>/ {name}</span>
+        </p>
       </Destaques>
       <ProductContainer>
         {loading ? (
