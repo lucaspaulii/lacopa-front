@@ -12,17 +12,19 @@ import { Icon } from "@iconify/react";
 import { useContext, useEffect, useState } from "react";
 import CategoriesDropDown from "./CategoriesDropDown";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { UserInfoContext } from "../contexts/UserContext";
 
 export default function Header() {
   const [isDropDown, setIsDropDown] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [prevLocation, setPrevLocation] = useState([]);
   const { userToken } = useContext(AuthContext);
   const { setUserInfo } = useContext(UserInfoContext);
   const [inputValue, setInputValue] = useState(undefined);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const URL = "https://lacopa-api.onrender.com/categories";
@@ -35,11 +37,18 @@ export default function Header() {
     });
   }, []);
 
+  useEffect(() => {
+    if (prevLocation !== location) {
+      setIsDropDown(false);
+    }
+  });
+
   function handleMouseEnter() {
     setIsDropDown(true);
   }
   function toggleDropDown() {
     setIsDropDown(!isDropDown);
+    setPrevLocation(location);
   }
 
   useEffect(() => {
@@ -53,7 +62,7 @@ export default function Header() {
         setUserInfo(res.data);
       });
       promise.catch((err) => {
-        console.log(err)
+        console.log(err);
       });
     }
   }, []);
@@ -81,15 +90,18 @@ export default function Header() {
             type="text"
             name="email"
             placeholder="O que você está procurando?"
-            onChange={e => setInputValue(e.target.value)}
+            onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                navigate(`/search/${inputValue}`)
+              if (e.key === "Enter") {
+                navigate(`/search/${inputValue}`);
               }
             }}
           />
-          <Link to={inputValue ? `/search/${inputValue}` : "#"} style={{color: "#ffffff"}}>
-          <Icon icon="ic:baseline-search" width="25" />
+          <Link
+            to={inputValue ? `/search/${inputValue}` : "#"}
+            style={{ color: "#ffffff" }}
+          >
+            <Icon icon="ic:baseline-search" width="25" />
           </Link>
         </ContainerSearch>
       </HeaderStyle>

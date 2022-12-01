@@ -129,6 +129,11 @@ export const ProductsDisplay = styled.div`
   * {
     margin: 5px 5px;
   }
+  h1 {
+    margin-top: 300px;
+    font-size: 100px;
+    color: red;
+  }
 `;
 
 //Styling do signin e signup

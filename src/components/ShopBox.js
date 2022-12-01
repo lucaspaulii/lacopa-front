@@ -10,6 +10,7 @@ export default function ShopBox(props) {
   const [successMessage, setSuccessMessage] = useState(undefined);
   const { userToken } = useContext(AuthContext);
   const [quantity, setQuantity] = useState(1);
+  const [alertAdd, setAlertAdd] = useState(false);
   const { id, name, price, image } = props;
   const URL = `https://lacopa-api.onrender.com/cart`;
   const navigate = useNavigate();
@@ -31,7 +32,13 @@ export default function ShopBox(props) {
       };
       const promise = axios.post(URL, products, config);
       promise.then((res) => {
-        console.log("Produto adicionado ao carrinho!");
+        setAlertAdd(true);
+        setTimeout(() => {
+          setAlertAdd(false);
+        }, 2000);
+        setTimeout(() => {
+          navigate("/main");
+        }, 2500);
       });
       promise.catch((err) => {
         console.log(err.response);
@@ -46,6 +53,9 @@ export default function ShopBox(props) {
         <Icon icon="mdi:cart-plus" width="36" height="36" />
         <p>Adicionar ao carrinho</p>
       </Cart>
+      {alertAdd && (
+        <AlertAddContainer alertAdd={alertAdd}>Produto adicionado ao carrinho!</AlertAddContainer>
+      )}
     </ShopBoxContainer>
   );
 }
@@ -55,6 +65,25 @@ const ShopBoxContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   color: #8b8b8b;
+`;
+
+const AlertAddContainer = styled.div`
+  height: 100px;
+  width: 200px;
+  color: #ffffff;
+  background-color: #548e19cc;
+  position: fixed;
+  margin: 200px auto;
+  top: 0;
+  left: 25%;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: opacity 0.7s ease-out;
+  opacity: ${props => props.alertAdd ? '1' : '0'};
 `;
 
 const Cart = styled.button`

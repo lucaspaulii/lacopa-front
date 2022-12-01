@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import ProductBox from "../components/ProductBox.js";
-import Header from "../components/Header.js";
 import {
   CategoryContainer,
   Destaques,
@@ -19,8 +18,8 @@ export default function SearchBar(params) {
     const URL = `https://lacopa-api.onrender.com/product/${searchInput}`;
     const promise = axios.get(URL);
     promise.then((res) => {
-      setProducts(res.data);
       setIsLoading(false);
+      setProducts(res.data);
     });
     promise.catch((err) => {
       console.log(err);
@@ -30,8 +29,7 @@ export default function SearchBar(params) {
 
   return (
     <CategoryContainer>
-      <Header />
-      <Destaques>{searchInput}</Destaques>
+      <Destaques>{products.length === 0 ? 'Produto não encontrado' : searchInput}</Destaques>
       <ProductsDisplay>
         {isLoading && (
           <RotatingLines
@@ -44,7 +42,7 @@ export default function SearchBar(params) {
         )}
         {!isLoading &&
           ((products.length > 0)
-            ? products[0].map((product) => {
+            ? (products[0].map((product) => {
                 return (
                   <ProductBox
                     key={product._id}
@@ -57,8 +55,8 @@ export default function SearchBar(params) {
                     value={product.value}
                   />
                 );
-              })
-            : "Nenhum produto foi encontrado")}
+              }))
+            : '')}
       </ProductsDisplay>
     </CategoryContainer>
   );
