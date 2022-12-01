@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function HighlightProducts(props) {
   const { id, amount, category, description, image, name, value } = props;
   const [showProduct, setShowProduct] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setShowProduct(true);
   }, []);
 
   return (
-    <Link to={`/products/${id}`} style={{ textDecoration: "none" }}>
-      <ProductContainer showProduct={showProduct}>
-        <ProductImage src={image} />
-        <p>{name}</p>
-        <p>R${value},00</p>
-      </ProductContainer>
-    </Link>
+    <ProductContainer onClick={() => navigate(`/products/${id}`)}>
+                <ProductImage src={image} />
+                <p>{name}</p>
+                <p>R${value},00</p>
+    </ProductContainer>
   );
 }
 
